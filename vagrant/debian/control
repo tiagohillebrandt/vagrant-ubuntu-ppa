@@ -7,7 +7,7 @@ Standards-Version: 3.9.7
 Homepage: https://www.vagrantup.com/
 
 Package: vagrant
-Architecture: any
+Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Vagrant is a tool for building and managing virtual machine
  environments in a single workflow.

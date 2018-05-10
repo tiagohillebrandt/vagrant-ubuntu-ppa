@@ -1,3 +1,21 @@
+vagrant (2.1.1ubuntu3) xenial; urgency=medium
+
+  * Vagrant 2.1.1.
+
+ -- Tiago Hillebrandt <tiago@tiagohillebrandt.com>  Thu, 10 May 2018 00:58:27 -0500
+
+vagrant (2.1.1ubuntu2) xenial; urgency=medium
+
+  * Vagrant 2.1.1.
+
+ -- Tiago Hillebrandt <tiago@tiagohillebrandt.com>  Thu, 10 May 2018 00:43:28 -0500
+
+vagrant (2.1.1ubuntu1) xenial; urgency=medium
+
+  * Vagrant 2.1.1.
+
+ -- Tiago Hillebrandt <tiago@tiagohillebrandt.com>  Thu, 10 May 2018 00:08:28 -0500
+
 vagrant (2.1.1) xenial; urgency=medium
 
   * Vagrant 2.1.1.
