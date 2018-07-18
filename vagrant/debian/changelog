@@ -1,3 +1,9 @@
+vagrant (2.1.2) xenial; urgency=medium
+
+  * Vagrant 2.1.2.
+
+ -- Tiago Hillebrandt <tiago@tiagohillebrandt.com>  Tue, 17 Jul 2018 23:28:00 -0500
+
 vagrant (2.1.1ubuntu3) xenial; urgency=medium
 
   * Vagrant 2.1.1.

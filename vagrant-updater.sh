@@ -12,12 +12,16 @@ if [[ $? -ne 0 ]]; then
     exit 1
 fi
 
-wget https://releases.hashicorp.com/vagrant/${latest}/vagrant_${latest}_linux_amd64.zip -O vagrant.zip
+wget https://releases.hashicorp.com/vagrant/${latest}/vagrant_${latest}_x86_64.deb -O vagrant.deb
 
 if [[ $? -eq 0 ]]; then
-    unzip vagrant.zip
+    dpkg -x vagrant.deb .
 
-    mv vagrant $currdir/vagrant/usr/bin/
+    directories=("usr" "opt")
+    for dir in ${directories[@]}; do
+        test -d $currdir/vagrant/$dir && rm -r $currdir/vagrant/$dir
+        mv $dir/ $currdir/vagrant/
+    done
 fi
 
 rm -r $tempdir
