@@ -96,7 +96,7 @@ while test $# -gt 0; do
         ;;
 
     --version)
-        echo libcurl 7.59.0
+        echo libcurl 7.61.0
         exit 0
         ;;
 
@@ -108,20 +108,20 @@ while test $# -gt 0; do
         # dash as that's used for things like version 1.2.3-CVS
         cpatch=`echo $checkfor | cut -d. -f3 | cut -d- -f1`
         checknum=`echo "$cmajor*256*256 + $cminor*256 + ${cpatch:-0}" | bc`
-        numuppercase=`echo 073b00 | tr 'a-f' 'A-F'`
+        numuppercase=`echo 073d00 | tr 'a-f' 'A-F'`
         nownum=`echo "obase=10; ibase=16; $numuppercase" | bc`
 
         if test "$nownum" -ge "$checknum"; then
           # silent success
           exit 0
         else
-          echo "requested version $checkfor is newer than existing 7.59.0"
+          echo "requested version $checkfor is newer than existing 7.61.0"
           exit 1
         fi
         ;;
 
     --vernum)
-        echo 073b00
+        echo 073d00
         exit 0
         ;;
 
@@ -160,7 +160,7 @@ while test $# -gt 0; do
 
     --static-libs)
         if test "Xyes" != "Xno" ; then
-          echo ${exec_prefix}/lib/libcurl.a -L/opt/vagrant/embedded/lib -Wl,-rpath=XORIGIN/../lib:/opt/vagrant/embedded/lib -lssh2 -lssl -lcrypto -lssl -lcrypto -lz
+          echo ${exec_prefix}/lib/libcurl.a -L/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib64 -Wl,-rpath=XORIGIN/../lib:XORIGIN/../lib64:/opt/vagrant/embedded/lib:/opt/vagrant/embedded/lib64 -lssh2 -lssl -lcrypto -lssl -lcrypto -lz
         else
           echo "curl was built with static libraries disabled" >&2
           exit 1
@@ -168,7 +168,7 @@ while test $# -gt 0; do
         ;;
 
     --configure)
-        echo " '--prefix=/opt/vagrant/embedded' '--disable-dependency-tracking' '--without-libidn2' '--disable-ldap' '--with-libssh2' 'CFLAGS=-I/opt/vagrant/embedded/include' 'LDFLAGS=-L/opt/vagrant/embedded/lib -Wl,-rpath=XORIGIN/../lib:/opt/vagrant/embedded/lib'"
+        echo " '--prefix=/opt/vagrant/embedded' '--disable-dependency-tracking' '--without-libidn2' '--disable-ldap' '--with-libssh2' '--with-ssl' 'CFLAGS=-I/opt/vagrant/embedded/include' 'LDFLAGS=-L/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib64 -Wl,-rpath=XORIGIN/../lib:XORIGIN/../lib64:/opt/vagrant/embedded/lib:/opt/vagrant/embedded/lib64' 'CPPFLAGS=-I/opt/vagrant/embedded/include'"
         ;;
 
     *)

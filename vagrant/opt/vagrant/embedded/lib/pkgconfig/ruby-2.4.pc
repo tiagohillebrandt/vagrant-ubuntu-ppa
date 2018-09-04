@@ -45,7 +45,7 @@ LIBRUBYARG_SHARED=-Wl,-rpath,'$${ORIGIN}/../lib' -Wl,-rpath,'$${ORIGIN}/../lib' 
 LIBRUBYARG_STATIC=-Wl,-rpath,'$${ORIGIN}/../lib' -Wl,-rpath,'$${ORIGIN}/../lib' -l${RUBY_SO_NAME}-static
 LIBRUBYARG=${LIBRUBYARG_SHARED}
 LIBS=-lpthread -lgmp -ldl -lcrypt -lm 
-DLDFLAGS=-L/opt/vagrant/embedded/lib -Wl,-rpath=XORIGIN/../lib:/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib  -Wl,-rpath,/opt/vagrant/embedded/lib
+DLDFLAGS=-L/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib64 -Wl,-rpath=XORIGIN/../lib:XORIGIN/../lib64:/opt/vagrant/embedded/lib:/opt/vagrant/embedded/lib64 -L/opt/vagrant/embedded/lib  -Wl,-rpath,/opt/vagrant/embedded/lib
 
 Name: Ruby
 Description: Object Oriented Script Language
