@@ -19,7 +19,7 @@ if [[ $? -eq 0 ]]; then
 
     directories=("usr" "opt")
     for dir in ${directories[@]}; do
-        test -d $currdir/vagrant/$dir && rm -r $currdir/vagrant/$dir
+        test -d $currdir/vagrant/$dir && rm -rf $currdir/vagrant/$dir
         mv $dir/ $currdir/vagrant/
     done
 fi
