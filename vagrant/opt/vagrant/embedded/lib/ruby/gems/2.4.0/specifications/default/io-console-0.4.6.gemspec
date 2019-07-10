@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.homepage = "https://www.ruby-lang.org".freeze
   s.licenses = ["BSD-2-Clause".freeze]
   s.required_ruby_version = Gem::Requirement.new(">= 2.0.0".freeze)
-  s.rubygems_version = "2.6.14.1".freeze
+  s.rubygems_version = "2.6.14.4".freeze
   s.summary = "Console interface".freeze
 end

@@ -13,10 +13,10 @@ Gem::Specification.new do |s|
   s.description = "Provides telnet client functionality.".freeze
   s.email = ["hsbt@ruby-lang.org".freeze]
   s.homepage = "https://github.com/ruby/net-telnet".freeze
-  s.rubygems_version = "2.6.14.1".freeze
+  s.rubygems_version = "2.6.14.4".freeze
   s.summary = "Provides telnet client functionality.".freeze
 
-  s.installed_by_version = "2.6.14.1" if s.respond_to? :installed_by_version
+  s.installed_by_version = "2.6.14.4" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
