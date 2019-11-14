@@ -10,7 +10,7 @@
 
 module RbConfig
   RUBY_VERSION.start_with?("2.4.") or
-    raise "ruby lib version (2.4.6) doesn't match executable version (#{RUBY_VERSION})"
+    raise "ruby lib version (2.4.9) doesn't match executable version (#{RUBY_VERSION})"
 
   # Ruby installed directory.
   TOPDIR = File.dirname(__FILE__).chomp!("/lib/ruby/2.4.0/x86_64-linux")
@@ -21,8 +21,8 @@ module RbConfig
   CONFIG["DESTDIR"] = DESTDIR
   CONFIG["MAJOR"] = "2"
   CONFIG["MINOR"] = "4"
-  CONFIG["TEENY"] = "6"
-  CONFIG["PATCHLEVEL"] = "354"
+  CONFIG["TEENY"] = "9"
+  CONFIG["PATCHLEVEL"] = "362"
   CONFIG["INSTALL"] = '/usr/bin/install -c'
   CONFIG["EXEEXT"] = ""
   CONFIG["prefix"] = (TOPDIR || DESTDIR + "/opt/vagrant/embedded")
@@ -198,7 +198,7 @@ module RbConfig
   CONFIG["build_vendor"] = "pc"
   CONFIG["build_cpu"] = "x86_64"
   CONFIG["build"] = "x86_64-pc-linux-gnu"
-  CONFIG["RUBY_PROGRAM_VERSION"] = "2.4.6"
+  CONFIG["RUBY_PROGRAM_VERSION"] = "2.4.9"
   CONFIG["cxxflags"] = "$(optflags) $(debugflags) $(warnflags)"
   CONFIG["cppflags"] = ""
   CONFIG["cflags"] = "$(optflags) $(debugflags) $(warnflags)"
