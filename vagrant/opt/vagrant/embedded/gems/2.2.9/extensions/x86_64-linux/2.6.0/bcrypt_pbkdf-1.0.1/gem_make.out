@@ -1,0 +1,19 @@
+current directory: /opt/vagrant/embedded/gems/2.2.9/gems/bcrypt_pbkdf-1.0.1/ext/mri
+/opt/vagrant/embedded/bin/ruby -I /opt/vagrant/embedded/lib/ruby/2.6.0 -r ./siteconf20200507-13052-6jzo22.rb extconf.rb
+creating Makefile
+
+current directory: /opt/vagrant/embedded/gems/2.2.9/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR=" clean
+
+current directory: /opt/vagrant/embedded/gems/2.2.9/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR="
+compiling bcrypt_pbkdf.c
+compiling bcrypt_pbkdf_ext.c
+compiling blowfish.c
+compiling explicit_bzero.c
+compiling hash_sha512.c
+linking shared-object bcrypt_pbkdf_ext.so
+
+current directory: /opt/vagrant/embedded/gems/2.2.9/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_pbkdf_ext.so ./.gem.20200507-13052-1nu84i6
