@@ -5,7 +5,7 @@ tempdir=$(mktemp -d)
 
 cd $tempdir
 
-latest=$(curl -sSG "https://api.github.com/repos/hashicorp/vagrant/tags" | grep "name" | cut -d\" -f4 | sort -n | tail -n 1 | sed 's/[^0-9\.]//g')
+latest=$(curl -sSG "https://api.github.com/repos/hashicorp/vagrant/tags" | grep "name" | cut -d\" -f4 | sort -V | tail -n 1 | sed 's/[^0-9\.]//g')
 
 if [[ $? -ne 0 ]]; then
     echo "Unable to determine latest Vagrant release."
