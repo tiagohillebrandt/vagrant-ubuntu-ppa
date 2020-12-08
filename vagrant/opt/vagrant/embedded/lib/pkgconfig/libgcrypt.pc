@@ -11,7 +11,7 @@ digests="crc gostr3411-94  md4 md5 rmd160 sha1 sha256 sha512 sha3 tiger whirlpoo
 Name: libgcrypt
 Description: General purpose cryptographic library
 Requires: gpg-error
-Version: 1.8.5
+Version: 1.8.7
 Cflags: 
 Libs: -lgcrypt
 URL: https://www.gnupg.org/software/libgcrypt/index.html

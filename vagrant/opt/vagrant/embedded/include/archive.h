@@ -36,7 +36,7 @@
  * assert that ARCHIVE_VERSION_NUMBER >= 2012108.
  */
 /* Note: Compiler will complain if this does not match archive_entry.h! */
-#define	ARCHIVE_VERSION_NUMBER 3003002
+#define	ARCHIVE_VERSION_NUMBER 3004003
 
 #include <sys/stat.h>
 #include <stddef.h>  /* for wchar_t */
@@ -52,7 +52,7 @@
  */
 #if defined(__BORLANDC__) && __BORLANDC__ >= 0x560
 # include <stdint.h>
-#elif !defined(__WATCOMC__) && !defined(_MSC_VER) && !defined(__INTERIX) && !defined(__BORLANDC__) && !defined(_SCO_DS) && !defined(__osf__)
+#elif !defined(__WATCOMC__) && !defined(_MSC_VER) && !defined(__INTERIX) && !defined(__BORLANDC__) && !defined(_SCO_DS) && !defined(__osf__) && !defined(__CLANG_INTTYPES_H)
 # include <inttypes.h>
 #endif
 
@@ -155,7 +155,7 @@ __LA_DECL int		archive_version_number(void);
 /*
  * Textual name/version of the library, useful for version displays.
  */
-#define	ARCHIVE_VERSION_ONLY_STRING "3.3.2"
+#define	ARCHIVE_VERSION_ONLY_STRING "3.4.3"
 #define	ARCHIVE_VERSION_STRING "libarchive " ARCHIVE_VERSION_ONLY_STRING
 __LA_DECL const char *	archive_version_string(void);
 
@@ -177,6 +177,7 @@ __LA_DECL const char *  archive_zlib_version(void);
 __LA_DECL const char *  archive_liblzma_version(void);
 __LA_DECL const char *  archive_bzlib_version(void);
 __LA_DECL const char *  archive_liblz4_version(void);
+__LA_DECL const char *  archive_libzstd_version(void);
 
 /* Declare our basic types. */
 struct archive;
@@ -276,6 +277,7 @@ typedef const char *archive_passphrase_callback(struct archive *,
 #define	ARCHIVE_FILTER_LZOP	11
 #define	ARCHIVE_FILTER_GRZIP	12
 #define	ARCHIVE_FILTER_LZ4	13
+#define	ARCHIVE_FILTER_ZSTD	14
 
 #if ARCHIVE_VERSION_NUMBER < 4000000
 #define	ARCHIVE_COMPRESSION_NONE	ARCHIVE_FILTER_NONE
@@ -338,6 +340,7 @@ typedef const char *archive_passphrase_callback(struct archive *,
 #define	ARCHIVE_FORMAT_RAR			0xD0000
 #define	ARCHIVE_FORMAT_7ZIP			0xE0000
 #define	ARCHIVE_FORMAT_WARC			0xF0000
+#define	ARCHIVE_FORMAT_RAR_V5			0x100000
 
 /*
  * Codes returned by archive_read_format_capabilities().
@@ -433,6 +436,7 @@ __LA_DECL int archive_read_support_filter_program_signature
 __LA_DECL int archive_read_support_filter_rpm(struct archive *);
 __LA_DECL int archive_read_support_filter_uu(struct archive *);
 __LA_DECL int archive_read_support_filter_xz(struct archive *);
+__LA_DECL int archive_read_support_filter_zstd(struct archive *);
 
 __LA_DECL int archive_read_support_format_7zip(struct archive *);
 __LA_DECL int archive_read_support_format_all(struct archive *);
@@ -446,6 +450,7 @@ __LA_DECL int archive_read_support_format_iso9660(struct archive *);
 __LA_DECL int archive_read_support_format_lha(struct archive *);
 __LA_DECL int archive_read_support_format_mtree(struct archive *);
 __LA_DECL int archive_read_support_format_rar(struct archive *);
+__LA_DECL int archive_read_support_format_rar5(struct archive *);
 __LA_DECL int archive_read_support_format_raw(struct archive *);
 __LA_DECL int archive_read_support_format_tar(struct archive *);
 __LA_DECL int archive_read_support_format_warc(struct archive *);
@@ -688,6 +693,8 @@ __LA_DECL int archive_read_set_passphrase_callback(struct archive *,
 #define ARCHIVE_EXTRACT_SECURE_NOABSOLUTEPATHS (0x10000)
 /* Default: Do not clear no-change flags when unlinking object */
 #define	ARCHIVE_EXTRACT_CLEAR_NOCHANGE_FFLAGS	(0x20000)
+/* Default: Do not extract atomically (using rename) */
+#define	ARCHIVE_EXTRACT_SAFE_WRITES		(0x40000)
 
 __LA_DECL int archive_read_extract(struct archive *, struct archive_entry *,
 		     int flags);
@@ -778,6 +785,7 @@ __LA_DECL int archive_write_add_filter_program(struct archive *,
 		     const char *cmd);
 __LA_DECL int archive_write_add_filter_uuencode(struct archive *);
 __LA_DECL int archive_write_add_filter_xz(struct archive *);
+__LA_DECL int archive_write_add_filter_zstd(struct archive *);
 
 
 /* A convenience function to set the format based on the code or name. */
@@ -1089,6 +1097,8 @@ __LA_DECL int	archive_match_excluded(struct archive *,
  */
 __LA_DECL int	archive_match_path_excluded(struct archive *,
 		    struct archive_entry *);
+/* Control recursive inclusion of directory content when directory is included. Default on. */
+__LA_DECL int	archive_match_set_inclusion_recursion(struct archive *, int);
 /* Add exclusion pathname pattern. */
 __LA_DECL int	archive_match_exclude_pattern(struct archive *, const char *);
 __LA_DECL int	archive_match_exclude_pattern_w(struct archive *,

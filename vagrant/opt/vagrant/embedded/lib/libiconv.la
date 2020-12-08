@@ -8,7 +8,7 @@
 dlname='libiconv.so.2'
 
 # Names of this library.
-library_names='libiconv.so.2.6.0 libiconv.so.2 libiconv.so'
+library_names='libiconv.so.2.6.1 libiconv.so.2 libiconv.so'
 
 # The name of the static archive.
 old_library=''
@@ -25,7 +25,7 @@ weak_library_names=''
 # Version information for libiconv.
 current=8
 age=6
-revision=0
+revision=1
 
 # Is this an already installed library?
 installed=yes

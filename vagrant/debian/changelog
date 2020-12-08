@@ -1,3 +1,9 @@
+vagrant (2.2.14) xenial; urgency=medium
+
+  * Vagrant 2.2.14.
+
+ -- Tiago Hillebrandt <tiago@tiagohillebrandt.com>  Tue, 08 Dec 2020 13:49:47 -0300
+
 vagrant (2.2.10) xenial; urgency=medium
 
   * Vagrant 2.2.10.

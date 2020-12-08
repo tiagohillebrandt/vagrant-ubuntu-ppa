@@ -8,7 +8,7 @@
 dlname='libgcrypt.so.20'
 
 # Names of this library.
-library_names='libgcrypt.so.20.2.5 libgcrypt.so.20 libgcrypt.so'
+library_names='libgcrypt.so.20.2.8 libgcrypt.so.20 libgcrypt.so'
 
 # The name of the static archive.
 old_library='libgcrypt.a'
@@ -25,7 +25,7 @@ weak_library_names=''
 # Version information for libgcrypt.
 current=22
 age=2
-revision=5
+revision=8
 
 # Is this an already installed library?
 installed=yes
