@@ -14,7 +14,7 @@
 # General.
 prefix="/opt/vagrant/embedded"
 exec_prefix="${prefix}"
-version="1.8.7"
+version="1.9.2"
 includedir="${prefix}/include"
 libdir="${exec_prefix}/lib"
 gpg_error_libs="-L/opt/vagrant/embedded/lib -lgpg-error"
@@ -31,9 +31,9 @@ api_version="1"
 my_host="x86_64-pc-linux-gnu"
 
 # Misc information.
-symmetric_ciphers="arcfour blowfish cast5 des aes twofish serpent rfc2268 seed camellia idea salsa20 gost28147 chacha20"
+symmetric_ciphers="arcfour blowfish cast5 des aes twofish serpent rfc2268 seed camellia idea salsa20 gost28147 chacha20 sm4"
 asymmetric_ciphers="dsa elgamal rsa ecc"
-digests="crc gostr3411-94  md4 md5 rmd160 sha1 sha256 sha512 sha3 tiger whirlpool stribog blake2"
+digests="crc gostr3411-94  md4 md5 rmd160 sha1 sha256 sha512 sha3 tiger whirlpool stribog blake2 sm3"
 
 # State variables.
 echo_libs=no
@@ -96,7 +96,19 @@ while test $# -gt 0; do
 	--exec-prefix)
 	    echo_exec_prefix=yes
 	    ;;
-	--version)
+        --variable=*)
+            case "${1#*=}" in
+                prefix) echo "$prefix" ;;
+                exec_prefix) echo "$exec_prefix" ;;
+                host) echo "$my_host" ;;
+                api_version) echo "$api_version" ;;
+		symmetric_ciphers) echo "$symmetric_ciphers" ;;
+		asymmetric_ciphers) echo "$asymmetric_ciphers" ;;
+		digests) echo "$digests" ;;
+            esac
+            exit 0
+            ;;
+	--modversion|--version)
 	    echo_version=yes
 	    ;;
         --api-version)

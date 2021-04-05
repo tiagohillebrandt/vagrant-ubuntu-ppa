@@ -1215,4 +1215,4 @@ GPG_ERR_SQL_ROW		SQL has another row ready
 GPG_ERR SQL_DONE	SQL has finished executing
 
 
-# Installed by libgpg-error 1.39
+# Installed by libgpg-error 1.41

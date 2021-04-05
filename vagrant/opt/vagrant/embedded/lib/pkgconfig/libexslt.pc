@@ -8,5 +8,6 @@ Name: libexslt
 Version: 0.8.20
 Description: EXSLT Extension library
 Requires: libxml-2.0
-Libs: -L${libdir} -lexslt -lxslt -L/opt/vagrant/embedded/lib -lxml2 -lz -liconv -lm -ldl -lm 
 Cflags: -I${includedir}
+Libs: -L${libdir} -lexslt -lxslt -L/opt/vagrant/embedded/lib -lxml2 -L/opt/vagrant/embedded/lib/lib -lz -liconv -lm -ldl
+Libs.private: -lm 

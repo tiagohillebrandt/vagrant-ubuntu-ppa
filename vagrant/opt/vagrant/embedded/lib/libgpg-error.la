@@ -8,7 +8,7 @@
 dlname='libgpg-error.so.0'
 
 # Names of this library.
-library_names='libgpg-error.so.0.30.0 libgpg-error.so.0 libgpg-error.so'
+library_names='libgpg-error.so.0.31.1 libgpg-error.so.0 libgpg-error.so'
 
 # The name of the static archive.
 old_library='libgpg-error.a'
@@ -23,9 +23,9 @@ dependency_libs=' -L/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib64'
 weak_library_names=''
 
 # Version information for libgpg-error.
-current=30
-age=30
-revision=0
+current=31
+age=31
+revision=1
 
 # Is this an already installed library?
 installed=yes

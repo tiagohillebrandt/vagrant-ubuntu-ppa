@@ -10,7 +10,7 @@
 #
 # This software is licensed as described in the file COPYING, which
 # you should have received as part of this distribution. The terms
-# are also available at https://curl.haxx.se/docs/copyright.html.
+# are also available at https://curl.se/docs/copyright.html.
 #
 # You may opt to use, copy, modify, merge, publish, distribute and/or sell
 # copies of the Software, and permit persons to whom the Software is
@@ -84,19 +84,19 @@ while test $# -gt 0; do
         ;;
 
     --feature|--features)
-        for feature in AsynchDNS HTTPS-proxy IPv6 NTLM NTLM_WB SSL TLS-SRP UnixSockets libz ""; do
+        for feature in AsynchDNS HTTPS-proxy IPv6 NTLM NTLM_WB SSL TLS-SRP UnixSockets alt-svc libz ""; do
             test -n "$feature" && echo "$feature"
         done
         ;;
 
     --protocols)
-        for protocol in DICT FILE FTP FTPS GOPHER HTTP HTTPS IMAP IMAPS POP3 POP3S RTSP SCP SFTP SMB SMBS SMTP SMTPS TELNET TFTP; do
+        for protocol in DICT FILE FTP FTPS GOPHER GOPHERS HTTP HTTPS IMAP IMAPS MQTT POP3 POP3S RTSP SCP SFTP SMB SMBS SMTP SMTPS TELNET TFTP; do
             echo "$protocol"
         done
         ;;
 
     --version)
-        echo libcurl 7.72.0
+        echo libcurl 7.75.0
         exit 0
         ;;
 
@@ -108,11 +108,11 @@ while test $# -gt 0; do
         # dash as that's used for things like version 1.2.3-CVS
         cpatch=`echo $checkfor | cut -d. -f3 | cut -d- -f1`
 
-        vmajor=`echo 7.72.0 | cut -d. -f1`
-        vminor=`echo 7.72.0 | cut -d. -f2`
+        vmajor=`echo 7.75.0 | cut -d. -f1`
+        vminor=`echo 7.75.0 | cut -d. -f2`
         # when extracting the patch part we strip off everything after a
         # dash as that's used for things like version 1.2.3-CVS
-        vpatch=`echo 7.72.0 | cut -d. -f3 | cut -d- -f1`
+        vpatch=`echo 7.75.0 | cut -d. -f3 | cut -d- -f1`
 
         if test "$vmajor" -gt "$cmajor"; then
             exit 0;
@@ -128,12 +128,12 @@ while test $# -gt 0; do
             fi
         fi
 
-        echo "requested version $checkfor is newer than existing 7.72.0"
+        echo "requested version $checkfor is newer than existing 7.75.0"
         exit 1
         ;;
 
     --vernum)
-        echo 074800
+        echo 074b00
         exit 0
         ;;
 
@@ -161,7 +161,7 @@ while test $# -gt 0; do
            CURLLIBDIR=""
         fi
         if test "Xyes" = "Xno"; then
-          echo ${CURLLIBDIR}-lcurl -lssh2 -L/opt/vagrant/embedded/lib -lssh2 -lssl -lcrypto -lssl -lcrypto -lz
+          echo ${CURLLIBDIR}-lcurl -lssh2 -L/opt/vagrant/embedded/lib -lssh2 -lssl -lcrypto -lssl -lcrypto -lz -pthread
         else
           echo ${CURLLIBDIR}-lcurl
         fi
@@ -172,7 +172,7 @@ while test $# -gt 0; do
 
     --static-libs)
         if test "Xyes" != "Xno" ; then
-          echo ${exec_prefix}/lib/libcurl.a -L/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib64 -Wl,-rpath=/opt/vagrant/embedded/lib:/opt/vagrant/embedded/lib64 -L/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib -lssh2 -L/opt/vagrant/embedded/lib -lssh2 -lssl -lcrypto -lssl -lcrypto -lz
+          echo ${exec_prefix}/lib/libcurl.a -L/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib64 -Wl,-rpath=/opt/vagrant/embedded/lib:/opt/vagrant/embedded/lib64 -L/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib -lssh2 -L/opt/vagrant/embedded/lib -lssh2 -lssl -lcrypto -lssl -lcrypto -lz -pthread
         else
           echo "curl was built with static libraries disabled" >&2
           exit 1

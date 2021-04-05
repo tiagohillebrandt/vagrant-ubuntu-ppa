@@ -64,7 +64,7 @@ while test $# -gt 0; do
 	    output="$output $exec_prefix"
 	    ;;
         --modversion|--version)
-            echo "1.39"
+            echo "1.41"
 	    exit 0
 	    ;;
 	--variable=*)

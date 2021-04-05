@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib".freeze]
   s.authors = ["Keiju ISHITSUKA".freeze]
   s.bindir = "exe".freeze
-  s.date = "2020-11-19"
+  s.date = "2021-03-30"
   s.description = "Watches for termination of multiple threads.".freeze
   s.email = ["keiju@ruby-lang.org".freeze]
   s.files = ["thwait.rb".freeze, "thwait/version.rb".freeze]
