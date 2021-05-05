@@ -9,13 +9,13 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib".freeze]
   s.authors = ["Keiju ISHITSUKA".freeze]
   s.bindir = "exe".freeze
-  s.date = "2021-03-30"
+  s.date = "2021-04-27"
   s.description = "An idiomatic Ruby interface for common UNIX shell commands.".freeze
   s.email = ["keiju@ruby-lang.org".freeze]
   s.files = ["shell.rb".freeze, "shell/builtin-command.rb".freeze, "shell/command-processor.rb".freeze, "shell/error.rb".freeze, "shell/filter.rb".freeze, "shell/process-controller.rb".freeze, "shell/system-command.rb".freeze, "shell/version.rb".freeze]
   s.homepage = "https://github.com/ruby/shell".freeze
   s.licenses = ["BSD-2-Clause".freeze]
-  s.rubygems_version = "3.0.3".freeze
+  s.rubygems_version = "3.0.3.1".freeze
   s.summary = "An idiomatic Ruby interface for common UNIX shell commands.".freeze
 
   if s.respond_to? :specification_version then

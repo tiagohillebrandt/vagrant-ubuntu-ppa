@@ -9,13 +9,13 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib".freeze]
   s.authors = ["Marc-Andre Lafortune".freeze]
   s.bindir = "exe".freeze
-  s.date = "2021-03-30"
+  s.date = "2021-04-27"
   s.description = "An implementation of Matrix and Vector classes.".freeze
   s.email = ["ruby-core@marc-andre.ca".freeze]
   s.files = ["matrix.rb".freeze, "matrix/eigenvalue_decomposition.rb".freeze, "matrix/lup_decomposition.rb".freeze]
   s.homepage = "https://github.com/ruby/matrix".freeze
   s.licenses = ["BSD-2-Clause".freeze]
-  s.rubygems_version = "3.0.3".freeze
+  s.rubygems_version = "3.0.3.1".freeze
   s.summary = "An implementation of Matrix and Vector classes.".freeze
 
   if s.respond_to? :specification_version then

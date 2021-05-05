@@ -10,7 +10,7 @@
 
 module RbConfig
   RUBY_VERSION.start_with?("2.6.") or
-    raise "ruby lib version (2.6.6) doesn't match executable version (#{RUBY_VERSION})"
+    raise "ruby lib version (2.6.7) doesn't match executable version (#{RUBY_VERSION})"
 
   # Ruby installed directory.
   TOPDIR = File.dirname(__FILE__).chomp!("/lib/ruby/2.6.0/x86_64-linux")
@@ -21,8 +21,8 @@ module RbConfig
   CONFIG["DESTDIR"] = DESTDIR
   CONFIG["MAJOR"] = "2"
   CONFIG["MINOR"] = "6"
-  CONFIG["TEENY"] = "6"
-  CONFIG["PATCHLEVEL"] = "146"
+  CONFIG["TEENY"] = "7"
+  CONFIG["PATCHLEVEL"] = "197"
   CONFIG["INSTALL"] = '/usr/bin/install -c'
   CONFIG["EXEEXT"] = ""
   CONFIG["prefix"] = (TOPDIR || DESTDIR + "/opt/vagrant/embedded")
@@ -44,7 +44,7 @@ module RbConfig
   CONFIG["RUBY_SEARCH_PATH"] = ""
   CONFIG["UNIVERSAL_INTS"] = ""
   CONFIG["UNIVERSAL_ARCHNAMES"] = ""
-  CONFIG["configure_args"] = " '--prefix=/opt/vagrant/embedded' '--disable-debug' '--disable-dependency-tracking' '--disable-install-doc' '--enable-shared' '--with-opt-dir=/opt/vagrant/embedded' '--enable-load-relative' 'CFLAGS=-I/opt/vagrant/embedded/include' 'LDFLAGS=-L/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib64 -Wl,-rpath=/opt/vagrant/embedded/lib:/opt/vagrant/embedded/lib64' 'CPPFLAGS=-I/opt/vagrant/embedded/include'"
+  CONFIG["configure_args"] = " '--prefix=/opt/vagrant/embedded' '--disable-debug' '--disable-dependency-tracking' '--disable-install-doc' '--enable-shared' '--with-opt-dir=/opt/vagrant/embedded' '--enable-load-relative' 'CFLAGS=-I/opt/vagrant/embedded/include -I./include -O3 -std=c99' 'LDFLAGS=-L/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib64 -Wl,-rpath=/opt/vagrant/embedded/lib:/opt/vagrant/embedded/lib64' 'CPPFLAGS=-I/opt/vagrant/embedded/include'"
   CONFIG["CONFIGURE"] = "configure"
   CONFIG["vendorarchdir"] = "$(vendorlibdir)/$(sitearch)"
   CONFIG["vendorlibdir"] = "$(vendordir)/$(ruby_version)"
@@ -94,7 +94,7 @@ module RbConfig
   CONFIG["rubyw_install_name"] = ""
   CONFIG["EXTDLDFLAGS"] = ""
   CONFIG["EXTLDFLAGS"] = ""
-  CONFIG["strict_warnflags"] = "-std=gnu99"
+  CONFIG["strict_warnflags"] = ""
   CONFIG["warnflags"] = "-Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable"
   CONFIG["debugflags"] = "-ggdb3"
   CONFIG["optflags"] = "-O3"
@@ -183,7 +183,7 @@ module RbConfig
   CONFIG["OBJEXT"] = "o"
   CONFIG["CPPFLAGS"] = "-I/opt/vagrant/embedded/include -I/opt/vagrant/embedded/include $(DEFS) $(cppflags)"
   CONFIG["LDFLAGS"] = "-L. -L/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib64 -Wl,-rpath=/opt/vagrant/embedded/lib:/opt/vagrant/embedded/lib64 -fstack-protector -rdynamic -Wl,-export-dynamic -L/opt/vagrant/embedded/lib  -Wl,-rpath,/opt/vagrant/embedded/lib"
-  CONFIG["CFLAGS"] = "-I/opt/vagrant/embedded/include -fPIC"
+  CONFIG["CFLAGS"] = "-I/opt/vagrant/embedded/include -I./include -O3 -std=c99 -fPIC"
   CONFIG["CC"] = "gcc"
   CONFIG["target_os"] = "linux"
   CONFIG["target_vendor"] = "pc"
@@ -201,7 +201,7 @@ module RbConfig
   CONFIG["build_cpu"] = "x86_64"
   CONFIG["build"] = "x86_64-pc-linux-gnu"
   CONFIG["RUBY_API_VERSION"] = "$(MAJOR).$(MINOR)"
-  CONFIG["RUBY_PROGRAM_VERSION"] = "2.6.6"
+  CONFIG["RUBY_PROGRAM_VERSION"] = "2.6.7"
   CONFIG["HAVE_GIT"] = "yes"
   CONFIG["GIT"] = "git"
   CONFIG["cxxflags"] = "$(optflags) $(debugflags) $(warnflags)"
